@@ -1,5 +1,4 @@
 const GITHUB_URL = "https://github.com/jaameypr/aethera-home";
-const DOCS_URL = "#";
 
 export default function OpenSourceCTA() {
   return (
@@ -19,20 +18,14 @@ export default function OpenSourceCTA() {
           code is on GitHub, MIT licensed, and yours to run, fork, and extend. Pull requests are
           welcome.
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <a
             href={GITHUB_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-[#7C3AED] hover:bg-[#6D28D9] text-white font-semibold rounded-lg transition-colors"
+            className="inline-flex items-center justify-center gap-2 px-5 py-2 bg-[#7C3AED] hover:bg-[#6D28D9] text-white text-sm font-medium rounded-md transition-colors"
           >
             View the source on GitHub →
-          </a>
-          <a
-            href={DOCS_URL}
-            className="inline-flex items-center justify-center gap-2 px-7 py-3.5 border border-[#27272A] hover:border-[#7C3AED] text-[#F4F4F5] hover:text-[#7C3AED] font-semibold rounded-lg transition-colors"
-          >
-            Read the docs →
           </a>
         </div>
       </div>

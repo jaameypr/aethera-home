@@ -28,12 +28,12 @@ export default function HeroSection() {
           a clean browser-based UI running on your own hardware.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+        <div className="flex flex-col sm:flex-row gap-3 justify-center mb-8">
           <a
             href={GITHUB_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-[#7C3AED] hover:bg-[#6D28D9] text-white font-semibold rounded-lg transition-colors text-base"
+            className="inline-flex items-center justify-center gap-2 px-5 py-2 bg-[#7C3AED] hover:bg-[#6D28D9] text-white text-sm font-medium rounded-md transition-colors"
           >
             ⭐ Star on GitHub
           </a>
@@ -41,7 +41,7 @@ export default function HeroSection() {
             href={DISCORD_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 px-7 py-3.5 border border-[#27272A] hover:border-[#7C3AED] text-[#F4F4F5] hover:text-[#7C3AED] font-semibold rounded-lg transition-colors text-base"
+            className="inline-flex items-center justify-center gap-2 px-5 py-2 border border-[#3f3f46] hover:border-[#52525b] text-[#A1A1AA] hover:text-[#F4F4F5] text-sm font-medium rounded-md transition-colors"
           >
             💬 Join Discord
           </a>
