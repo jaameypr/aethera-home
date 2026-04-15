@@ -407,38 +407,23 @@ function FrameBackground({ index }: { index: number }) {
 
 export default function FeatureScroll() {
   const outerRef = useRef<HTMLDivElement>(null);
-  const targetRef = useRef(0);
-  const currentRef = useRef(0);
-  const rafRef = useRef<number>(0);
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const updateTarget = () => {
+    const onScroll = () => {
       if (!outerRef.current) return;
       const rect = outerRef.current.getBoundingClientRect();
       const scrolled = -rect.top;
       const total = rect.height - window.innerHeight;
       if (total <= 0) return;
-      targetRef.current = Math.max(0, Math.min(1, scrolled / total));
+      setProgress(Math.max(0, Math.min(1, scrolled / total)));
     };
 
-    const tick = () => {
-      const diff = targetRef.current - currentRef.current;
-      if (Math.abs(diff) > 0.0001) {
-        currentRef.current += diff * 0.1;
-        setProgress(currentRef.current);
-      }
-      rafRef.current = requestAnimationFrame(tick);
-    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    // Run once on mount in case page loaded mid-scroll
+    onScroll();
 
-    window.addEventListener('scroll', updateTarget, { passive: true });
-    updateTarget();
-    rafRef.current = requestAnimationFrame(tick);
-
-    return () => {
-      window.removeEventListener('scroll', updateTarget);
-      cancelAnimationFrame(rafRef.current);
-    };
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   const frameFloat = progress * (FRAME_COUNT - 1);
