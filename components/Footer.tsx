@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const GITHUB_URL = "https://github.com/jaameypr/aethera-next";
 const GITHUB_HOME_URL = "https://github.com/jaameypr/aethera-home";
-const DISCORD_URL = "#";
+const DISCORD_URL = "https://discord.getaethera.de";
 const MIT_URL = "https://github.com/jaameypr/aethera-next/blob/main/LICENSE";
 
 export default function Footer() {

@@ -3,7 +3,7 @@
 import Image from "next/image";
 
 const GITHUB_URL = "https://github.com/jaameypr/aethera-next";
-const DISCORD_URL = "#";
+const DISCORD_URL = "https://discord.getaethera.de";
 
 export default function Navbar() {
   return (
