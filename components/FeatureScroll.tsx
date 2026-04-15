@@ -62,10 +62,6 @@ const frames: FrameData[] = [
   },
 ];
 
-function easeInOut(t: number): number {
-  return t < 0.5 ? 2 * t * t : 1 - (-2 * t + 2) ** 2 / 2;
-}
-
 // ─── Background Components ────────────────────────────────────────────────────
 
 const BgProjects = memo(function BgProjects() {
@@ -406,36 +402,29 @@ function FrameBackground({ index }: { index: number }) {
 // ─── Main Component ───────────────────────────────────────────────────────────
 
 export default function FeatureScroll() {
-  const outerRef = useRef<HTMLDivElement>(null);
-  const [progress, setProgress] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const sentinelRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
-    let rafId: number;
+    const observers: IntersectionObserver[] = [];
 
-    const update = () => {
-      if (outerRef.current) {
-        const rect = outerRef.current.getBoundingClientRect();
-        const scrolled = -rect.top;
-        const total = rect.height - window.innerHeight;
-        if (total > 0) {
-          const p = Math.max(0, Math.min(1, scrolled / total));
-          // Only trigger a re-render when progress meaningfully changes
-          setProgress(prev => (Math.abs(prev - p) > 0.001 ? p : prev));
-        }
-      }
-      rafId = requestAnimationFrame(update);
-    };
+    frames.forEach((_, i) => {
+      const el = sentinelRefs.current[i];
+      if (!el) return;
 
-    rafId = requestAnimationFrame(update);
-    return () => cancelAnimationFrame(rafId);
+      const obs = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) setActiveIndex(i);
+        },
+        { threshold: 0.5 },
+      );
+
+      obs.observe(el);
+      observers.push(obs);
+    });
+
+    return () => observers.forEach(o => o.disconnect());
   }, []);
-
-  const frameFloat = progress * (FRAME_COUNT - 1);
-  const currentFrame = Math.min(Math.floor(frameFloat), FRAME_COUNT - 1);
-  const rawT = frameFloat - currentFrame;
-  const t = easeInOut(rawT);
-
-  const activeDot = t >= 0.5 ? Math.min(currentFrame + 1, FRAME_COUNT - 1) : currentFrame;
 
   return (
     <>
@@ -450,58 +439,62 @@ export default function FeatureScroll() {
         </div>
       </section>
 
-      {/* Sticky scroll outer — 700vh so user scrolls through 8 frames */}
-      <div ref={outerRef} style={{ height: '700vh' }} className="relative">
+      {/* Outer container — tall enough for all 8 sentinels */}
+      <div className="relative" style={{ height: `${FRAME_COUNT * 100}vh` }}>
+
+        {/* Invisible sentinels — each 100vh, stacked inside the outer container.
+            IntersectionObserver fires when the midpoint of each enters the viewport,
+            telling us which frame to show. No scroll events needed. */}
+        {frames.map((_, i) => (
+          <div
+            key={`s${i}`}
+            ref={el => { sentinelRefs.current[i] = el; }}
+            aria-hidden="true"
+            style={{
+              position: 'absolute',
+              top: `${i * 100}vh`,
+              height: '100vh',
+              width: '100%',
+              pointerEvents: 'none',
+            }}
+          />
+        ))}
+
+        {/* Sticky display panel */}
         <div className="sticky top-0 h-screen overflow-hidden bg-[#09090B]">
-          {frames.map((frame, i) => {
-            const isLast = i === FRAME_COUNT - 1;
-            let opacity: number;
-            if (i === currentFrame) {
-              opacity = isLast ? 1 : 1 - t;
-            } else if (i === currentFrame + 1) {
-              opacity = t;
-            } else {
-              opacity = 0;
-            }
-
-            const textY =
-              i === currentFrame
-                ? -t * 28
-                : i === currentFrame + 1
-                ? (1 - t) * 28
-                : 28;
-
-            return (
-              <div
-                key={i}
-                className="absolute inset-0"
-                style={{ opacity, willChange: 'opacity' }}
-                aria-hidden={opacity < 0.1}
-              >
-                <FrameBackground index={i} />
-                <div
-                  className="relative z-10 h-full flex flex-col items-center justify-center text-center px-8"
-                  style={{ transform: `translateY(${textY}px)`, willChange: 'transform' }}
+          {frames.map((frame, i) => (
+            <div
+              key={i}
+              className="absolute inset-0"
+              style={{
+                opacity: i === activeIndex ? 1 : 0,
+                transform: `translateY(${i === activeIndex ? 0 : 24}px)`,
+                transition: 'opacity 0.65s ease, transform 0.65s ease',
+                willChange: 'opacity, transform',
+                pointerEvents: i === activeIndex ? 'auto' : 'none',
+              }}
+              aria-hidden={i !== activeIndex}
+            >
+              <FrameBackground index={i} />
+              <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-8">
+                <span
+                  className="block text-[11px] font-bold tracking-[0.3em] uppercase mb-6"
+                  style={{ color: frame.accent }}
                 >
-                  <span
-                    className="block text-[11px] font-bold tracking-[0.3em] uppercase mb-6"
-                    style={{ color: frame.accent }}
-                  >
-                    {frame.label}
-                  </span>
-                  <h2
-                    className="font-bold text-[#F4F4F5] leading-[1.05] tracking-tight mb-6 max-w-3xl"
-                    style={{ fontSize: 'clamp(2.8rem, 7vw, 5.5rem)' }}
-                  >
-                    {frame.headline}
-                  </h2>
-                  <p className="text-xl md:text-2xl text-[#71717A] max-w-xl leading-relaxed">
-                    {frame.subline}
-                  </p>
-                </div>
+                  {frame.label}
+                </span>
+                <h2
+                  className="font-bold text-[#F4F4F5] leading-[1.05] tracking-tight mb-6 max-w-3xl"
+                  style={{ fontSize: 'clamp(2.8rem, 7vw, 5.5rem)' }}
+                >
+                  {frame.headline}
+                </h2>
+                <p className="text-xl md:text-2xl text-[#71717A] max-w-xl leading-relaxed">
+                  {frame.subline}
+                </p>
               </div>
-            );
-          })}
+            </div>
+          ))}
 
           {/* Progress dots — right edge */}
           <div
@@ -513,10 +506,10 @@ export default function FeatureScroll() {
                 key={i}
                 className="rounded-full"
                 style={{
-                  width: i === activeDot ? 8 : 5,
-                  height: i === activeDot ? 8 : 5,
-                  backgroundColor: i === activeDot ? frame.accent : '#3f3f46',
-                  transition: 'width 0.3s ease, height 0.3s ease, background-color 0.3s ease',
+                  width: i === activeIndex ? 8 : 5,
+                  height: i === activeIndex ? 8 : 5,
+                  backgroundColor: i === activeIndex ? frame.accent : '#3f3f46',
+                  transition: 'all 0.3s ease',
                 }}
               />
             ))}
@@ -524,7 +517,7 @@ export default function FeatureScroll() {
 
           {/* Frame counter — bottom center */}
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 font-mono text-[11px] text-[#3f3f46] z-20 tabular-nums">
-            {String(activeDot + 1).padStart(2, '0')} / {String(FRAME_COUNT).padStart(2, '0')}
+            {String(activeIndex + 1).padStart(2, '0')} / {String(FRAME_COUNT).padStart(2, '0')}
           </div>
         </div>
       </div>
