@@ -1,6 +1,6 @@
 import { MessageCircle } from "lucide-react";
 
-const GITHUB_URL = "https://github.com/jaameypr/aethera-home";
+const GITHUB_URL = "https://github.com/jaameypr/aethera-next";
 const DISCORD_URL = "#";
 
 function GithubIcon({ className }: { className?: string }) {

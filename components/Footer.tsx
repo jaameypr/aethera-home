@@ -1,8 +1,9 @@
 import Image from "next/image";
 
-const GITHUB_URL = "https://github.com/jaameypr/aethera-home";
+const GITHUB_URL = "https://github.com/jaameypr/aethera-next";
+const GITHUB_HOME_URL = "https://github.com/jaameypr/aethera-home";
 const DISCORD_URL = "#";
-const MIT_URL = "https://github.com/jaameypr/aethera-home/blob/main/LICENSE";
+const MIT_URL = "https://github.com/jaameypr/aethera-next/blob/main/LICENSE";
 
 export default function Footer() {
   return (
@@ -13,14 +14,13 @@ export default function Footer() {
         <p className="text-[#71717A] text-sm">
           Built with ♥ and open-sourced on{" "}
           <a
-            href={GITHUB_URL}
+            href={GITHUB_HOME_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="text-[#F4F4F5] hover:text-[#7C3AED] transition-colors"
           >
             GitHub
           </a>
-          .
         </p>
         <div className="flex items-center gap-6 mt-2">
           <a

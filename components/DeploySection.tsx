@@ -47,7 +47,7 @@ export default function DeploySection() {
               <div className="text-[#71717A] select-none"># 1. Clone the repo</div>
               <div className="flex flex-wrap gap-x-1.5">
                 <span className="text-[#22D3EE]">git clone</span>
-                <span className="text-[#F4F4F5]">https://github.com/your-org/aethera</span>
+                <span className="text-[#F4F4F5]">https://github.com/jaameypr/aethera-next</span>
                 <span className="text-[#71717A]">&amp;&amp;</span>
                 <span className="text-[#22D3EE]">cd</span>
                 <span className="text-[#F4F4F5]">aethera</span>

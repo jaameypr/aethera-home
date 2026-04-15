@@ -1,4 +1,4 @@
-const GITHUB_URL = "https://github.com/jaameypr/aethera-home";
+const GITHUB_URL = "https://github.com/jaameypr/aethera-next";
 
 function GithubIcon({ className }: { className?: string }) {
   return (
