@@ -13,7 +13,6 @@ export default function ImprintPage() {
   const city = process.env.IMPRINT_CITY ?? "";
   const country = process.env.IMPRINT_COUNTRY ?? "";
   const email = process.env.IMPRINT_EMAIL ?? "";
-  const responsible = process.env.IMPRINT_RESPONSIBLE ?? "";
 
   return (
     <main className="min-h-screen bg-[#09090B]">
@@ -55,13 +54,6 @@ export default function ImprintPage() {
             ) : (
               <p>E-Mail: –</p>
             )}
-          </div>
-
-          <div>
-            <h2 className="text-xs uppercase tracking-widest font-semibold text-[#52525B] mb-3">
-              Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV
-            </h2>
-            <p className="text-[#D4D4D8]">{responsible}</p>
           </div>
 
           <div>
