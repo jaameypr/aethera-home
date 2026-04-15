@@ -24,10 +24,10 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section className="py-20 px-6 bg-[#18181B] border-y border-[#27272A]">
+    <section className="py-20 px-6 bg-[#0D0D0F] border-y border-[#1A1A1D]">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-14">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#F4F4F5] mb-4">How it works</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-[#D4D4D8] mb-4">How it works</h2>
           <p className="text-[#71717A] text-lg">Up and running in minutes, not hours.</p>
         </div>
 
@@ -43,7 +43,7 @@ export default function HowItWorks() {
                   <div className="hidden md:block flex-1 h-px bg-[#27272A] ml-4" />
                 )}
               </div>
-              <h3 className="text-xl font-semibold text-[#F4F4F5]">{step.title}</h3>
+              <h3 className="text-xl font-semibold text-[#D4D4D8]">{step.title}</h3>
               <p className="text-[#71717A] text-sm leading-relaxed">{step.description}</p>
               {step.code && (
                 <div className="flex items-center gap-2 px-4 py-2.5 bg-[#09090B] border border-[#27272A] rounded-lg w-fit">

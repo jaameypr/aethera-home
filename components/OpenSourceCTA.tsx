@@ -10,14 +10,14 @@ function GithubIcon({ className }: { className?: string }) {
 
 export default function OpenSourceCTA() {
   return (
-    <section className="py-24 px-6 bg-[#18181B] border-y border-[#27272A] relative overflow-hidden">
+    <section className="py-24 px-6 bg-[#0D0D0F] border-y border-[#1A1A1D] relative overflow-hidden">
       {/* Background glow */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-[#7C3AED]/10 blur-3xl" />
       </div>
 
       <div className="relative max-w-3xl mx-auto text-center">
-        <h2 className="text-4xl md:text-5xl font-bold text-[#F4F4F5] mb-6 leading-tight">
+        <h2 className="text-4xl md:text-5xl font-bold text-[#D4D4D8] mb-6 leading-tight">
           Free forever.{" "}
           <span className="text-[#7C3AED]">Self-hosted forever.</span>
         </h2>

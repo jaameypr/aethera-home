@@ -23,7 +23,7 @@ export default function DeploySection() {
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#F4F4F5] mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#D4D4D8] mb-4">
             One script. Everything handled.
           </h2>
           <p className="text-[#71717A] text-lg max-w-2xl mx-auto">
@@ -47,17 +47,17 @@ export default function DeploySection() {
               <div className="text-[#71717A] select-none"># 1. Clone the repo</div>
               <div className="flex flex-wrap gap-x-1.5">
                 <span className="text-[#22D3EE]">git clone</span>
-                <span className="text-[#F4F4F5]">https://github.com/jaameypr/aethera-next</span>
+                <span className="text-[#D4D4D8]">https://github.com/jaameypr/aethera-next</span>
                 <span className="text-[#71717A]">&amp;&amp;</span>
                 <span className="text-[#22D3EE]">cd</span>
-                <span className="text-[#F4F4F5]">aethera</span>
+                <span className="text-[#D4D4D8]">aethera</span>
               </div>
             </div>
             <div className="space-y-1">
               <div className="text-[#71717A] select-none"># 2. Start everything</div>
               <div>
                 <span className="text-[#7C3AED]">./run.sh</span>
-                <span className="text-[#F4F4F5]"> up</span>
+                <span className="text-[#D4D4D8]"> up</span>
               </div>
             </div>
           </div>
@@ -65,7 +65,7 @@ export default function DeploySection() {
 
         {/* "That's it" explanation card */}
         <div className="bg-[#18181B] border border-[#27272A] rounded-xl p-6 mb-8 text-sm text-[#71717A] leading-relaxed">
-          <span className="text-[#F4F4F5] font-semibold">That&apos;s it.</span> On first run,{" "}
+          <span className="text-[#D4D4D8] font-semibold">That&apos;s it.</span> On first run,{" "}
           <code className="text-[#22D3EE] font-mono">run.sh</code> automatically copies{" "}
           <code className="text-[#22D3EE] font-mono">.env.example</code> to{" "}
           <code className="text-[#22D3EE] font-mono">.env</code>, generates a cryptographically
@@ -81,7 +81,7 @@ export default function DeploySection() {
         </div>
 
         {/* Command reference table */}
-        <h3 className="text-base font-semibold text-[#F4F4F5] mb-3">Full command reference</h3>
+        <h3 className="text-base font-semibold text-[#D4D4D8] mb-3">Full command reference</h3>
         <div className="border border-[#27272A] rounded-xl overflow-hidden overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
@@ -116,7 +116,7 @@ export default function DeploySection() {
             <Info className="w-4 h-4" />
           </div>
           <p className="text-sm text-[#71717A] leading-relaxed">
-            <span className="text-[#F4F4F5] font-medium">.env migration is automatic. </span>
+            <span className="text-[#D4D4D8] font-medium">.env migration is automatic. </span>
             If you&apos;re upgrading from an older install that used a bare{" "}
             <code className="text-[#22D3EE] font-mono">MONGODB_URI</code>, the script detects it,
             generates{" "}

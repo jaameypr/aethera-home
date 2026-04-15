@@ -19,15 +19,16 @@ export default function Navbar() {
             width={32}
             height={32}
             className="rounded-md"
+            style={{ height: "auto" }}
           />
-          <span className="font-bold text-xl text-[#F4F4F5] tracking-tight">Aethera</span>
+          <span className="font-bold text-xl text-[#D4D4D8] tracking-tight">Aethera</span>
         </button>
         <div className="flex items-center gap-6">
           <a
             href={GITHUB_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#71717A] hover:text-[#F4F4F5] transition-colors text-sm font-medium"
+            className="text-[#71717A] hover:text-[#D4D4D8] transition-colors text-sm font-medium"
           >
             GitHub ↗
           </a>
@@ -35,7 +36,7 @@ export default function Navbar() {
             href={DISCORD_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#71717A] hover:text-[#F4F4F5] transition-colors text-sm font-medium"
+            className="text-[#71717A] hover:text-[#D4D4D8] transition-colors text-sm font-medium"
           >
             Discord ↗
           </a>

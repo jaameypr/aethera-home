@@ -25,7 +25,7 @@ export default function HeroSection() {
           Open source · MIT Licensed · Free forever
         </div>
 
-        <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-[#F4F4F5] leading-tight tracking-tight mb-6">
+        <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-[#D4D4D8] leading-tight tracking-tight mb-6">
           Your game servers.{" "}
           <span className="text-[#7C3AED]">Your infrastructure.</span>{" "}
           Your rules.
@@ -52,7 +52,7 @@ export default function HeroSection() {
             href={DISCORD_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 px-5 py-2 border border-[#3f3f46] hover:border-[#52525b] text-[#A1A1AA] hover:text-[#F4F4F5] text-sm font-medium rounded-md transition-colors"
+            className="inline-flex items-center justify-center gap-2 px-5 py-2 border border-[#3f3f46] hover:border-[#52525b] text-[#A1A1AA] hover:text-[#D4D4D8] text-sm font-medium rounded-md transition-colors"
           >
             <MessageCircle className="w-4 h-4" />
             Join Discord

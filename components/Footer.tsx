@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const GITHUB_URL = "https://github.com/jaameypr/aethera-next";
 const GITHUB_HOME_URL = "https://github.com/jaameypr/aethera-home";
@@ -9,7 +10,7 @@ export default function Footer() {
   return (
     <footer className="py-14 px-6 border-t border-[#27272A]">
       <div className="max-w-6xl mx-auto flex flex-col items-center gap-4">
-        <Image src="/logo.png" alt="Aethera Logo" width={40} height={40} className="rounded-md" />
+        <Image src="/logo.png" alt="Aethera Logo" width={40} height={40} className="rounded-md" style={{ height: "auto" }} />
         <p className="text-[#71717A] text-sm">Self-hosted game server management.</p>
         <p className="text-[#71717A] text-sm">
           Built with ♥ and open-sourced on{" "}
@@ -17,7 +18,7 @@ export default function Footer() {
             href={GITHUB_HOME_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#F4F4F5] hover:text-[#7C3AED] transition-colors"
+            className="text-[#D4D4D8] hover:text-[#7C3AED] transition-colors"
           >
             GitHub
           </a>
@@ -27,7 +28,7 @@ export default function Footer() {
             href={GITHUB_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#71717A] hover:text-[#F4F4F5] transition-colors text-sm"
+            className="text-[#71717A] hover:text-[#D4D4D8] transition-colors text-sm"
           >
             GitHub
           </a>
@@ -35,7 +36,7 @@ export default function Footer() {
             href={DISCORD_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#71717A] hover:text-[#F4F4F5] transition-colors text-sm"
+            className="text-[#71717A] hover:text-[#D4D4D8] transition-colors text-sm"
           >
             Discord
           </a>
@@ -43,10 +44,16 @@ export default function Footer() {
             href={MIT_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#71717A] hover:text-[#F4F4F5] transition-colors text-sm"
+            className="text-[#71717A] hover:text-[#D4D4D8] transition-colors text-sm"
           >
             License: MIT
           </a>
+          <Link
+            href="/imprint"
+            className="text-[#71717A] hover:text-[#D4D4D8] transition-colors text-sm"
+          >
+            Imprint
+          </Link>
         </div>
       </div>
     </footer>

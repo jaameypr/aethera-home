@@ -20,7 +20,7 @@ export default function TechStack() {
           {stack.map((tech) => (
             <span
               key={tech}
-              className="px-4 py-1.5 rounded-full bg-[#18181B] border border-[#27272A] text-[#71717A] text-sm font-medium hover:border-[#7C3AED]/50 hover:text-[#F4F4F5] transition-colors cursor-default"
+              className="px-4 py-1.5 rounded-full bg-[#18181B] border border-[#27272A] text-[#71717A] text-sm font-medium hover:border-[#7C3AED]/50 hover:text-[#D4D4D8] transition-colors cursor-default"
             >
               {tech}
             </span>

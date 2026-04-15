@@ -129,14 +129,14 @@ const BgLifecycle = memo(function BgLifecycle() {
 });
 
 const CONSOLE_LINES = [
-  { text: '$ ./run.sh up', color: '#F4F4F5' },
+  { text: '$ ./run.sh up', color: '#D4D4D8' },
   { text: 'Starting aethera and mongo...', color: '#71717A' },
   { text: '[compose] ✓  aethera-db  started', color: '#22D3EE' },
   { text: '[compose] ✓  aethera     started', color: '#22D3EE' },
   { text: 'Panel ready → http://localhost:3000', color: '#7C3AED' },
   { text: '> Server "survival" starting...', color: '#71717A' },
   { text: '> Done (2.4s)! TPS: 19.8  MSPT: 3.1', color: '#22D3EE' },
-  { text: '> Player Steve joined the game', color: '#F4F4F5' },
+  { text: '> Player Steve joined the game', color: '#D4D4D8' },
   { text: '█', color: '#71717A' },
 ];
 
@@ -434,7 +434,7 @@ export default function FeatureScroll() {
         <div className="max-w-2xl mx-auto text-center">
           <p className="text-xl text-[#71717A] leading-relaxed">
             Everything you need, nothing you don&apos;t.{' '}
-            <span className="text-[#F4F4F5]">No plugins. No SaaS tier. No phone-home.</span>{' '}
+            <span className="text-[#D4D4D8]">No plugins. No SaaS tier. No phone-home.</span>{' '}
             The features below ship in every install.
           </p>
         </div>
@@ -465,7 +465,7 @@ export default function FeatureScroll() {
                   {frame.label}
                 </span>
                 <h2
-                  className="font-bold text-[#F4F4F5] leading-[1.05] tracking-tight mb-6 max-w-3xl"
+                  className="font-bold text-[#D4D4D8] leading-[1.05] tracking-tight mb-6 max-w-3xl"
                   style={{ fontSize: 'clamp(2.8rem, 7vw, 5.5rem)' }}
                 >
                   {frame.headline}
@@ -507,7 +507,7 @@ export default function FeatureScroll() {
       <div className="py-14 px-6 text-center border-t border-[#27272A]">
         <p className="text-lg text-[#71717A]">
           And when you&apos;re ready to go further —{' '}
-          <span className="text-[#F4F4F5]">there are modules for that.</span>{' '}
+          <span className="text-[#D4D4D8]">there are modules for that.</span>{' '}
           <span className="text-[#7C3AED]">↓</span>
         </p>
       </div>

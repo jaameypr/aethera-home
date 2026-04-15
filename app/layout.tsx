@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   title: "Aethera — Self-Hosted Game Server Control Panel",
   description:
     "Aethera is a free, open-source, self-hosted control panel for managing Minecraft game servers. Docker-native, team-ready, MIT licensed.",
+  icons: {
+    icon: "/logo.png",
+  },
 };
 
 export default function RootLayout({

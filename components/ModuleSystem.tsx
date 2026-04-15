@@ -51,11 +51,11 @@ const modules: Module[] = [
 
 export default function ModuleSystem() {
   return (
-    <section className="py-20 px-6 bg-[#18181B] border-y border-[#27272A]">
+    <section className="py-20 px-6 bg-[#0D0D0F] border-y border-[#1A1A1D]">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-14">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#F4F4F5] mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#D4D4D8] mb-4">
             Extend Aethera with one-click modules.
           </h2>
           <p className="text-[#71717A] text-lg max-w-2xl mx-auto">
@@ -79,7 +79,7 @@ export default function ModuleSystem() {
                   <div className="w-8 h-8 rounded-md bg-[#7C3AED]/10 border border-[#7C3AED]/20 flex items-center justify-center text-[#7C3AED] flex-shrink-0">
                     {mod.icon}
                   </div>
-                  <h3 className="text-base font-semibold text-[#F4F4F5]">{mod.title}</h3>
+                  <h3 className="text-base font-semibold text-[#D4D4D8]">{mod.title}</h3>
                 </div>
                 <span
                   className={`shrink-0 px-2.5 py-0.5 rounded-full text-xs font-mono font-medium border ${
@@ -93,7 +93,7 @@ export default function ModuleSystem() {
               </div>
 
               {/* Tagline */}
-              <p className="text-[#F4F4F5] text-sm font-medium">{mod.tagline}</p>
+              <p className="text-[#D4D4D8] text-sm font-medium">{mod.tagline}</p>
 
               {/* Divider */}
               <div className="h-px bg-[#27272A]" />
