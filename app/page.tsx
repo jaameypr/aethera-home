@@ -1,7 +1,9 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import FeatureGrid from "@/components/FeatureGrid";
+import DeploySection from "@/components/DeploySection";
 import HowItWorks from "@/components/HowItWorks";
+import ModuleSystem from "@/components/ModuleSystem";
 import TechStack from "@/components/TechStack";
 import OpenSourceCTA from "@/components/OpenSourceCTA";
 import Footer from "@/components/Footer";
@@ -12,7 +14,9 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <FeatureGrid />
+      <DeploySection />
       <HowItWorks />
+      <ModuleSystem />
       <TechStack />
       <OpenSourceCTA />
       <Footer />
