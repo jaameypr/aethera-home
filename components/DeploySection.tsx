@@ -1,3 +1,5 @@
+import { Info } from "lucide-react";
+
 const commands = [
   { cmd: "./run.sh up", desc: "Build and start the full stack (app + MongoDB)" },
   { cmd: "./run.sh down", desc: "Stop and remove all containers" },
@@ -110,8 +112,8 @@ export default function DeploySection() {
 
         {/* Under-the-hood callout */}
         <div className="mt-5 flex gap-4 p-5 bg-[#18181B] border border-[#22D3EE]/20 rounded-xl">
-          <div className="shrink-0 mt-0.5 w-5 h-5 rounded-full bg-[#22D3EE]/15 border border-[#22D3EE]/40 flex items-center justify-center">
-            <span className="text-[#22D3EE] text-[10px] font-bold leading-none">i</span>
+          <div className="shrink-0 mt-0.5 text-[#22D3EE]">
+            <Info className="w-4 h-4" />
           </div>
           <p className="text-sm text-[#71717A] leading-relaxed">
             <span className="text-[#F4F4F5] font-medium">.env migration is automatic. </span>
