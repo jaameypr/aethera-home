@@ -6,7 +6,7 @@ const modules = [
     builtIn: false,
     tagline: "Server events in your Discord, automatically.",
     description:
-      "The Discord module is a standalone Spring Boot + JDA application that runs as a Docker container alongside the panel. Once installed and invited to your Discord guild, project managers can link their Aethera project to a guild using a one-time verification code generated in the panel. From that point on, the bot automatically posts rich embed notifications to a #aethera, #server-status, or first available text channel whenever a server starts, stops, encounters an error, or a backup completes. The module also polls server console logs at regular intervals and exposes a whitelist approval flow: players can request whitelist access via a /whitelist Discord command, and managers approve or deny the request directly from Discord — the panel processes the callback and updates the server automatically. Authentication between the module and the panel uses the auto-provisioned API key; network isolation on aethera-net provides an additional security boundary.",
+      "A standalone Spring Boot + JDA app that runs alongside the panel. Link a project to your guild with a one-time code — the bot posts rich embeds whenever a server starts, stops, errors, or completes a backup. Includes a /whitelist command so players can request access directly from Discord, with managers approving from the channel.",
   },
   {
     icon: "📧",
@@ -15,7 +15,7 @@ const modules = [
     builtIn: false,
     tagline: "Transactional email without a third-party service.",
     description:
-      "The SMTP module adds email delivery capabilities to your Aethera installation. Once running, it provides a simple internal mail API that the panel calls whenever a transactional email needs to be sent. Currently this powers password reset emails: when an admin resets a user's password from the admin panel, the new temporary password is delivered directly to the user's email address instead of having to be communicated out-of-band. The module connects to any standard SMTP server (Gmail, Mailgun, self-hosted Postfix — anything) using credentials you configure in the module's env vars. If the SMTP module is not installed or not running, the panel gracefully falls back to silent mode without breaking the reset flow.",
+      "Adds email delivery to your installation via a simple internal mail API. Currently powers password reset flows — temporary passwords go straight to the user's inbox instead of out-of-band. Connects to any standard SMTP server. If not installed, the panel silently falls back without breaking anything.",
   },
   {
     icon: "📄",
@@ -24,16 +24,16 @@ const modules = [
     builtIn: false,
     tagline: "Share files and backups with a public link — no object storage required.",
     description:
-      "Paperview is Aethera's built-in file viewer and sharing module. It runs as a Docker container and exposes a public-facing UI for browsing and downloading files that have been shared from the panel. Its primary integration is with the backup system: after creating a backup, you can upload it to Paperview with a single click — the panel streams the archive to Paperview in 5 MB chunks (safe for multi-gigabyte backups), and Paperview generates a versioned share link you can send to anyone. Optionally set an expiry date so the link auto-expires after a defined period. Paperview also doubles as the module registry host — the list of installable modules is itself a Paperview share, fetched and cached by the panel every five minutes. This means the registry can be updated by simply publishing a new version of the share, with no panel restart required.",
+      "Upload a backup to Paperview with one click — the panel streams the archive in 5 MB chunks and Paperview returns a versioned share link. Supports optional expiry dates. Also doubles as the module registry host: the installable-module list is a Paperview share, refreshed every five minutes with no panel restart needed.",
   },
   {
     icon: "⚙️",
     title: "Async Backup Worker",
-    badge: "built-in",
-    builtIn: true,
-    tagline: "Large backups, zero UI freezes.",
+    badge: "module",
+    builtIn: false,
+    tagline: "Offload backup processing to a dedicated Java service.",
     description:
-      "Unlike most backup solutions that block the web process until the archive is done, Aethera dispatches every backup as a background job to an isolated Node.js worker process. The worker connects to MongoDB independently, streams server data from disk directly into a .tar.gz archive without loading it into memory, and writes live progress updates back to an AsyncJob document — which the panel UI polls via Server-Sent Events so you watch a real progress bar rather than a spinner. Backups can include any combination of: world data, config files, mods, plugins, and datapacks. When the panel restarts, any jobs that were left in a running or pending state (e.g. after a crash) are automatically resolved during startup cleanup so the job list never shows stale \"stuck\" entries.",
+      "Aethera ships with a built-in Node.js backup worker that handles jobs in the background. Install this module to route all backup tasks to an external Spring Boot service instead — it takes over scheduling, archiving, and progress reporting, freeing the panel process entirely. Ideal for large installs where backup load is heavy.",
   },
 ];
 
@@ -46,17 +46,11 @@ export default function ModuleSystem() {
           <h2 className="text-3xl md:text-4xl font-bold text-[#F4F4F5] mb-4">
             Extend Aethera with one-click modules.
           </h2>
-          <p className="text-[#71717A] text-lg max-w-3xl mx-auto">
-            Aethera&apos;s module system lets you install optional add-ons as Docker containers that
-            run alongside the panel on the same internal{" "}
-            <code className="text-[#22D3EE] font-mono text-base">aethera-net</code> network. Modules
-            are listed in a remote registry, browsable from the admin panel — install, configure,
-            start, stop, update, or remove them without ever touching the command line. Each module
-            gets its own isolated container, its own auto-assigned host port, and communicates with
-            the panel over the internal network only. Modules that need to call back into Aethera
-            receive an auto-provisioned API key injected into their environment at install time. SSO
-            between the panel and a module is handled via short-lived JWTs signed with your{" "}
-            <code className="text-[#22D3EE] font-mono text-base">JWT_SECRET</code>.
+          <p className="text-[#71717A] text-lg max-w-2xl mx-auto">
+            Optional add-ons that run as Docker containers alongside the panel on the same{" "}
+            <code className="text-[#22D3EE] font-mono text-base">aethera-net</code> network.
+            Install, configure, and remove them from the admin panel — no command line needed.
+            Each module gets an isolated container and an auto-provisioned API key at install time.
           </p>
         </div>
 
@@ -92,13 +86,6 @@ export default function ModuleSystem() {
 
               {/* Full description */}
               <p className="text-[#71717A] text-sm leading-relaxed">{mod.description}</p>
-
-              {mod.builtIn && (
-                <div className="flex items-center gap-2 text-xs text-[#22D3EE]">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#22D3EE]" />
-                  No install required — ships with every Aethera instance
-                </div>
-              )}
             </div>
           ))}
         </div>
