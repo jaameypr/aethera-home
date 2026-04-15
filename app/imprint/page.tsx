@@ -3,14 +3,17 @@ import Footer from "@/components/Footer";
 import Link from "next/link";
 
 export const metadata = {
-  title: "Imprint — Aethera",
+  title: "Impressum — Aethera",
 };
 
 export default function ImprintPage() {
   const name = process.env.IMPRINT_NAME ?? "";
+  const careOf = process.env.IMPRINT_CARE_OF ?? "";
   const street = process.env.IMPRINT_STREET ?? "";
   const city = process.env.IMPRINT_CITY ?? "";
+  const country = process.env.IMPRINT_COUNTRY ?? "";
   const email = process.env.IMPRINT_EMAIL ?? "";
+  const responsible = process.env.IMPRINT_RESPONSIBLE ?? "";
 
   return (
     <main className="min-h-screen bg-[#09090B]">
@@ -23,41 +26,68 @@ export default function ImprintPage() {
           ← Back
         </Link>
 
-        <h1 className="text-3xl font-bold text-[#D4D4D8] mb-10">Imprint</h1>
+        <h1 className="text-3xl font-bold text-[#D4D4D8] mb-10">Impressum</h1>
 
         <div className="space-y-8 text-sm text-[#71717A] leading-relaxed">
+
           <div>
             <h2 className="text-xs uppercase tracking-widest font-semibold text-[#52525B] mb-3">
-              Information according to § 5 TMG
+              Angaben gemäß § 5 TMG
             </h2>
             <p className="text-[#D4D4D8]">{name}</p>
+            {careOf && <p>{careOf}</p>}
             <p>{street}</p>
             <p>{city}</p>
+            {country && <p>{country}</p>}
           </div>
-
-          {email && (
-            <div>
-              <h2 className="text-xs uppercase tracking-widest font-semibold text-[#52525B] mb-3">
-                Contact
-              </h2>
-              <a
-                href={`mailto:${email}`}
-                className="text-[#7C3AED] hover:underline"
-              >
-                {email}
-              </a>
-            </div>
-          )}
 
           <div>
             <h2 className="text-xs uppercase tracking-widest font-semibold text-[#52525B] mb-3">
-              Disclaimer
+              Kontakt
+            </h2>
+            {email ? (
+              <p>
+                E-Mail:{" "}
+                <a href={`mailto:${email}`} className="text-[#7C3AED] hover:underline">
+                  {email}
+                </a>
+              </p>
+            ) : (
+              <p>E-Mail: –</p>
+            )}
+          </div>
+
+          <div>
+            <h2 className="text-xs uppercase tracking-widest font-semibold text-[#52525B] mb-3">
+              Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV
+            </h2>
+            <p className="text-[#D4D4D8]">{responsible}</p>
+          </div>
+
+          <div>
+            <h2 className="text-xs uppercase tracking-widest font-semibold text-[#52525B] mb-3">
+              Haftung für Inhalte
             </h2>
             <p>
-              Despite careful content control, we assume no liability for the content of external
-              links. The operators of linked pages are solely responsible for their content.
+              Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen
+              Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir
+              jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu
+              überwachen.
             </p>
           </div>
+
+          <div>
+            <h2 className="text-xs uppercase tracking-widest font-semibold text-[#52525B] mb-3">
+              Haftung für Links
+            </h2>
+            <p>
+              Diese Website enthält Links zu externen Websites Dritter (z. B. GitHub, Discord), auf
+              deren Inhalte wir keinen Einfluss haben. Deshalb übernehmen wir für diese fremden
+              Inhalte keine Gewähr. Für die Inhalte der verlinkten Seiten ist stets der jeweilige
+              Anbieter oder Betreiber verantwortlich.
+            </p>
+          </div>
+
         </div>
       </section>
       <Footer />
