@@ -31,14 +31,17 @@ export default function HowItWorks() {
           <p className="text-[#71717A] text-lg">Up and running in minutes, not hours.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 relative">
-          {/* Connector line (desktop only) */}
-          <div className="hidden md:block absolute top-4 left-[calc(33%+1rem)] right-[calc(33%+1rem)] h-px bg-gradient-to-r from-[#27272A] via-[#7C3AED]/30 to-[#27272A]" />
-
-          {steps.map((step) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+          {steps.map((step, index) => (
             <div key={step.number} className="flex flex-col gap-4">
-              <div className="w-8 h-8 rounded-full bg-[#7C3AED]/20 border border-[#7C3AED]/40 flex items-center justify-center">
-                <span className="font-mono text-xs font-bold text-[#7C3AED]">{step.number}</span>
+              {/* Circle + line row */}
+              <div className="flex items-center">
+                <div className="w-8 h-8 shrink-0 rounded-full bg-[#7C3AED]/20 border border-[#7C3AED]/40 flex items-center justify-center">
+                  <span className="font-mono text-xs font-bold text-[#7C3AED]">{step.number}</span>
+                </div>
+                {index < steps.length - 1 && (
+                  <div className="hidden md:block flex-1 h-px bg-[#27272A] ml-4" />
+                )}
               </div>
               <h3 className="text-xl font-semibold text-[#F4F4F5]">{step.title}</h3>
               <p className="text-[#71717A] text-sm leading-relaxed">{step.description}</p>
