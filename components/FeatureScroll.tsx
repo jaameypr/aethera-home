@@ -298,18 +298,28 @@ const BgBackups = memo(function BgBackups() {
   );
 });
 
-const FILE_TREE = [
-  { depth: 0, name: '📁 survival', active: false },
-  { depth: 1, name: '📁 world', active: false },
-  { depth: 2, name: '📄 level.dat', active: false },
-  { depth: 2, name: '📁 region', active: false },
-  { depth: 1, name: '📄 server.properties', active: true },
-  { depth: 1, name: '📁 plugins', active: false },
-  { depth: 2, name: '📦 EssentialsX-2.21.0.jar', active: false },
-  { depth: 2, name: '📦 LuckPerms-5.4.98.jar', active: false },
-  { depth: 1, name: '📁 mods', active: false },
-  { depth: 2, name: '🧩 sodium-0.6.0.jar', active: false },
+import { Folder, File, Package, Box } from 'lucide-react';
+
+const FILE_TREE: { depth: number; name: string; type: 'folder' | 'file' | 'package' | 'mod'; active: boolean }[] = [
+  { depth: 0, name: 'survival',                  type: 'folder',  active: false },
+  { depth: 1, name: 'world',                     type: 'folder',  active: false },
+  { depth: 2, name: 'level.dat',                 type: 'file',    active: false },
+  { depth: 2, name: 'region',                    type: 'folder',  active: false },
+  { depth: 1, name: 'server.properties',         type: 'file',    active: true  },
+  { depth: 1, name: 'plugins',                   type: 'folder',  active: false },
+  { depth: 2, name: 'EssentialsX-2.21.0.jar',   type: 'package', active: false },
+  { depth: 2, name: 'LuckPerms-5.4.98.jar',     type: 'package', active: false },
+  { depth: 1, name: 'mods',                      type: 'folder',  active: false },
+  { depth: 2, name: 'sodium-0.6.0.jar',         type: 'mod',     active: false },
 ];
+
+function TreeIcon({ type }: { type: string }) {
+  const cls = 'w-3 h-3 flex-shrink-0';
+  if (type === 'folder')  return <Folder  className={cls} />;
+  if (type === 'package') return <Package className={cls} />;
+  if (type === 'mod')     return <Box     className={cls} />;
+  return <File className={cls} />;
+}
 
 const BgFiles = memo(function BgFiles() {
   return (
@@ -325,11 +335,12 @@ const BgFiles = memo(function BgFiles() {
           {FILE_TREE.map((item, i) => (
             <div
               key={i}
-              className={`py-0.5 rounded ${
+              className={`py-0.5 rounded flex items-center gap-1.5 ${
                 item.active ? 'bg-[#7C3AED]/20 text-[#7C3AED]' : 'text-[#71717A]'
               }`}
               style={{ paddingLeft: `${item.depth * 14 + 8}px` }}
             >
+              <TreeIcon type={item.type} />
               {item.name}
             </div>
           ))}

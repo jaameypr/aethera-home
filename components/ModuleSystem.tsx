@@ -1,6 +1,18 @@
-const modules = [
+import { Bot, Mail, Share2, HardDrive } from "lucide-react";
+import type { ReactNode } from "react";
+
+interface Module {
+  icon: ReactNode;
+  title: string;
+  badge: string;
+  builtIn: boolean;
+  tagline: string;
+  description: string;
+}
+
+const modules: Module[] = [
   {
-    icon: "🤖",
+    icon: <Bot className="w-5 h-5" />,
     title: "Discord Bot",
     badge: "discord",
     builtIn: false,
@@ -9,7 +21,7 @@ const modules = [
       "A standalone Spring Boot + JDA app that runs alongside the panel. Link a project to your guild with a one-time code — the bot posts rich embeds whenever a server starts, stops, errors, or completes a backup. Includes a /whitelist command so players can request access directly from Discord, with managers approving from the channel.",
   },
   {
-    icon: "📧",
+    icon: <Mail className="w-5 h-5" />,
     title: "SMTP Mailer",
     badge: "smtp",
     builtIn: false,
@@ -18,7 +30,7 @@ const modules = [
       "Adds email delivery to your installation via a simple internal mail API. Currently powers password reset flows — temporary passwords go straight to the user's inbox instead of out-of-band. Connects to any standard SMTP server. If not installed, the panel silently falls back without breaking anything.",
   },
   {
-    icon: "📄",
+    icon: <Share2 className="w-5 h-5" />,
     title: "Paperview File Sharing",
     badge: "paperview",
     builtIn: false,
@@ -27,7 +39,7 @@ const modules = [
       "Upload a backup to Paperview with one click — the panel streams the archive in 5 MB chunks and Paperview returns a versioned share link. Supports optional expiry dates. Also doubles as the module registry host: the installable-module list is a Paperview share, refreshed every five minutes with no panel restart needed.",
   },
   {
-    icon: "⚙️",
+    icon: <HardDrive className="w-5 h-5" />,
     title: "Async Backup Worker",
     badge: "module",
     builtIn: false,
@@ -64,7 +76,9 @@ export default function ModuleSystem() {
               {/* Card header */}
               <div className="flex items-center justify-between gap-3">
                 <div className="flex items-center gap-3">
-                  <span className="text-2xl">{mod.icon}</span>
+                  <div className="w-8 h-8 rounded-md bg-[#7C3AED]/10 border border-[#7C3AED]/20 flex items-center justify-center text-[#7C3AED] flex-shrink-0">
+                    {mod.icon}
+                  </div>
                   <h3 className="text-base font-semibold text-[#F4F4F5]">{mod.title}</h3>
                 </div>
                 <span
