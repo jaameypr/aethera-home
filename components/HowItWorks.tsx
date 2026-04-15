@@ -3,8 +3,8 @@ const steps = [
     number: "01",
     title: "Deploy in seconds",
     description:
-      "Copy .env.example, fill in a password and a JWT secret, run docker compose up -d. Aethera and MongoDB start together. A first-run setup wizard walks you through creating the admin account — no CLI required.",
-    code: "docker compose up -d",
+      "Clone the repo and run ./run.sh up. The script handles everything automatically — generates secrets, creates data directories, waits for MongoDB, and starts the full stack. A first-run setup wizard walks you through creating the admin account.",
+    code: "./run.sh up",
   },
   {
     number: "02",
