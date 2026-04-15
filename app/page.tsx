@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import FeatureGrid from "@/components/FeatureGrid";
+import FeatureScroll from "@/components/FeatureScroll";
 import DeploySection from "@/components/DeploySection";
 import HowItWorks from "@/components/HowItWorks";
 import ModuleSystem from "@/components/ModuleSystem";
@@ -13,7 +13,7 @@ export default function Home() {
     <main className="min-h-screen bg-[#09090B]">
       <Navbar />
       <HeroSection />
-      <FeatureGrid />
+      <FeatureScroll />
       <DeploySection />
       <HowItWorks />
       <ModuleSystem />
