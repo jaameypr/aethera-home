@@ -410,20 +410,24 @@ export default function FeatureScroll() {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const onScroll = () => {
-      if (!outerRef.current) return;
-      const rect = outerRef.current.getBoundingClientRect();
-      const scrolled = -rect.top;
-      const total = rect.height - window.innerHeight;
-      if (total <= 0) return;
-      setProgress(Math.max(0, Math.min(1, scrolled / total)));
+    let rafId: number;
+
+    const update = () => {
+      if (outerRef.current) {
+        const rect = outerRef.current.getBoundingClientRect();
+        const scrolled = -rect.top;
+        const total = rect.height - window.innerHeight;
+        if (total > 0) {
+          const p = Math.max(0, Math.min(1, scrolled / total));
+          // Only trigger a re-render when progress meaningfully changes
+          setProgress(prev => (Math.abs(prev - p) > 0.001 ? p : prev));
+        }
+      }
+      rafId = requestAnimationFrame(update);
     };
 
-    window.addEventListener('scroll', onScroll, { passive: true });
-    // Run once on mount in case page loaded mid-scroll
-    onScroll();
-
-    return () => window.removeEventListener('scroll', onScroll);
+    rafId = requestAnimationFrame(update);
+    return () => cancelAnimationFrame(rafId);
   }, []);
 
   const frameFloat = progress * (FRAME_COUNT - 1);
