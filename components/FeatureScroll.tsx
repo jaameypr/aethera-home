@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useRef, useState, memo } from 'react';
+import { useRef, useState, memo } from 'react';
+import { useScroll, useMotionValueEvent } from 'motion/react';
 
 const FRAME_COUNT = 8;
 
@@ -402,29 +403,18 @@ function FrameBackground({ index }: { index: number }) {
 // ─── Main Component ───────────────────────────────────────────────────────────
 
 export default function FeatureScroll() {
+  const containerRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const sentinelRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  useEffect(() => {
-    const observers: IntersectionObserver[] = [];
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start start', 'end end'],
+  });
 
-    frames.forEach((_, i) => {
-      const el = sentinelRefs.current[i];
-      if (!el) return;
-
-      const obs = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) setActiveIndex(i);
-        },
-        { threshold: 0.5 },
-      );
-
-      obs.observe(el);
-      observers.push(obs);
-    });
-
-    return () => observers.forEach(o => o.disconnect());
-  }, []);
+  useMotionValueEvent(scrollYProgress, 'change', (latest) => {
+    const idx = Math.min(Math.floor(latest * FRAME_COUNT), FRAME_COUNT - 1);
+    setActiveIndex(idx);
+  });
 
   return (
     <>
@@ -439,28 +429,8 @@ export default function FeatureScroll() {
         </div>
       </section>
 
-      {/* Outer container — tall enough for all 8 sentinels */}
-      <div className="relative" style={{ height: `${FRAME_COUNT * 100}vh` }}>
-
-        {/* Invisible sentinels — each 100vh, stacked inside the outer container.
-            IntersectionObserver fires when the midpoint of each enters the viewport,
-            telling us which frame to show. No scroll events needed. */}
-        {frames.map((_, i) => (
-          <div
-            key={`s${i}`}
-            ref={el => { sentinelRefs.current[i] = el; }}
-            aria-hidden="true"
-            style={{
-              position: 'absolute',
-              top: `${i * 100}vh`,
-              height: '100vh',
-              width: '100%',
-              pointerEvents: 'none',
-            }}
-          />
-        ))}
-
-        {/* Sticky display panel */}
+      {/* Outer container — tall enough to scroll through all 8 frames */}
+      <div ref={containerRef} style={{ height: `${FRAME_COUNT * 100}vh` }}>
         <div className="sticky top-0 h-screen overflow-hidden bg-[#09090B]">
           {frames.map((frame, i) => (
             <div
