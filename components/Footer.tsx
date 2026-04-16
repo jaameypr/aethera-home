@@ -10,7 +10,11 @@ export default function Footer() {
   return (
     <footer className="py-14 px-6 border-t border-[#27272A]">
       <div className="max-w-6xl mx-auto flex flex-col items-center gap-4">
-        <Image src="/logo.png" alt="Aethera Logo" width={40} height={40} className="rounded-md" style={{ height: "auto" }} />
+        <Image src="/logo.png" alt="Aethera Logo" width={40} height={40} style={{
+            height: "auto",
+            maskImage: "radial-gradient(circle, black 45%, transparent 75%)",
+            WebkitMaskImage: "radial-gradient(circle, black 45%, transparent 75%)",
+          }} />
         <p className="text-[#71717A] text-sm">Self-hosted game server management.</p>
         <p className="text-[#71717A] text-sm">
           Built with ♥ and open-sourced on{" "}

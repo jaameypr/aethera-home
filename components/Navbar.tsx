@@ -18,8 +18,11 @@ export default function Navbar() {
             alt="Aethera Logo"
             width={32}
             height={32}
-            className="rounded-md"
-            style={{ height: "auto" }}
+            style={{
+              height: "auto",
+              maskImage: "radial-gradient(circle, black 45%, transparent 75%)",
+              WebkitMaskImage: "radial-gradient(circle, black 45%, transparent 75%)",
+            }}
           />
           <span className="font-bold text-xl text-[#D4D4D8] tracking-tight">Aethera</span>
         </button>
