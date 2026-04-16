@@ -29,13 +29,13 @@ const frames: FrameData[] = [
     label: 'VISIBILITY',
     headline: 'Watch it run.',
     subline: 'Live console output, streamed directly from Docker. Send commands without opening a terminal.',
-    accent: '#22D3EE',
+    accent: '#22C55E',
   },
   {
     label: 'PERFORMANCE',
     headline: 'CPU. RAM. Right now.',
     subline: "Live resource graphs pulled from Docker stats. Know what's running hot before your players do.",
-    accent: '#22D3EE',
+    accent: '#22C55E',
   },
   {
     label: 'MODS & PLUGINS',
@@ -47,7 +47,7 @@ const frames: FrameData[] = [
     label: 'BACKUPS',
     headline: 'Choose what matters.',
     subline: 'Pick world, config, mods, plugins, or datapacks. Backups run in the background — the UI never freezes.',
-    accent: '#22D3EE',
+    accent: '#22C55E',
   },
   {
     label: 'FILES',
@@ -59,7 +59,7 @@ const frames: FrameData[] = [
     label: 'RESOURCE CONTROL',
     headline: 'Templates with guardrails.',
     subline: 'Pre-define server templates with a RAM cap. Managers can initialize them — nothing more.',
-    accent: '#22D3EE',
+    accent: '#22C55E',
   },
 ];
 
@@ -131,11 +131,11 @@ const BgLifecycle = memo(function BgLifecycle() {
 const CONSOLE_LINES = [
   { text: '$ ./run.sh up', color: '#D4D4D8' },
   { text: 'Starting aethera and mongo...', color: '#71717A' },
-  { text: '[compose] ✓  aethera-db  started', color: '#22D3EE' },
-  { text: '[compose] ✓  aethera     started', color: '#22D3EE' },
+  { text: '[compose] ✓  aethera-db  started', color: '#22C55E' },
+  { text: '[compose] ✓  aethera     started', color: '#22C55E' },
   { text: 'Panel ready → http://localhost:3000', color: '#7C3AED' },
   { text: '> Server "survival" starting...', color: '#71717A' },
-  { text: '> Done (2.4s)! TPS: 19.8  MSPT: 3.1', color: '#22D3EE' },
+  { text: '> Done (2.4s)! TPS: 19.8  MSPT: 3.1', color: '#22C55E' },
   { text: '> Player Steve joined the game', color: '#D4D4D8' },
   { text: '█', color: '#71717A' },
 ];
@@ -176,8 +176,8 @@ const BgMetrics = memo(function BgMetrics() {
               <stop offset="100%" stopColor="#7C3AED" stopOpacity="0" />
             </linearGradient>
             <linearGradient id="ramGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#22D3EE" stopOpacity="0.4" />
-              <stop offset="100%" stopColor="#22D3EE" stopOpacity="0" />
+              <stop offset="0%" stopColor="#22C55E" stopOpacity="0.4" />
+              <stop offset="100%" stopColor="#22C55E" stopOpacity="0" />
             </linearGradient>
           </defs>
           {/* Grid lines */}
@@ -212,7 +212,7 @@ const BgMetrics = memo(function BgMetrics() {
           {/* RAM line */}
           <polyline
             points="35,132 95,120 155,126 215,108 275,116 335,98 395,106 455,92 500,100"
-            stroke="#22D3EE" strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round"
+            stroke="#22C55E" strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round"
           />
           {/* X axis */}
           <line x1="35" y1="155" x2="500" y2="155" stroke="#27272A" strokeWidth="1" />
@@ -223,7 +223,7 @@ const BgMetrics = memo(function BgMetrics() {
             <span className="text-[#3f3f46]">CPU</span>
           </div>
           <div className="flex items-center gap-1.5">
-            <div className="w-3 h-0.5 rounded bg-[#22D3EE]" />
+            <div className="w-3 h-0.5 rounded bg-[#22C55E]" />
             <span className="text-[#3f3f46]">RAM</span>
           </div>
         </div>
@@ -274,7 +274,7 @@ const BgBackups = memo(function BgBackups() {
       <div className="w-[400px] opacity-[0.22] space-y-3.5">
         <div className="font-mono text-xs text-[#71717A] flex justify-between mb-1">
           <span>world_backup_apr2026.tar.gz</span>
-          <span className="text-[#22D3EE]">● running</span>
+          <span className="text-[#22C55E]">● running</span>
         </div>
         {BACKUP_SEGS.map((seg) => (
           <div key={seg.label}>
@@ -284,7 +284,7 @@ const BgBackups = memo(function BgBackups() {
             </div>
             <div className="h-1.5 rounded-full bg-[#27272A] overflow-hidden">
               <div
-                className="h-full rounded-full bg-[#22D3EE] origin-left"
+                className="h-full rounded-full bg-[#22C55E] origin-left"
                 style={{
                   width: seg.w,
                   animation: `barScaleLoop 3.5s ease-in-out ${seg.delay} infinite`,
@@ -358,7 +358,7 @@ const BgBlueprints = memo(function BgBlueprints() {
         <svg width="100%" height="100%">
           <defs>
             <pattern id="bpDots" width="40" height="40" patternUnits="userSpaceOnUse">
-              <circle cx="20" cy="20" r="1" fill="#22D3EE" />
+              <circle cx="20" cy="20" r="1" fill="#22C55E" />
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill="url(#bpDots)" />
@@ -366,22 +366,22 @@ const BgBlueprints = memo(function BgBlueprints() {
       </div>
       {/* Template card */}
       <div
-        className="relative w-64 bg-[#18181B] border border-[#22D3EE]/40 rounded-xl p-5 opacity-[0.25]"
+        className="relative w-64 bg-[#18181B] border border-[#22C55E]/40 rounded-xl p-5 opacity-[0.25]"
         style={{ animation: 'featureFloat 5s ease-in-out 0.5s infinite alternate' }}
       >
         <div className="flex items-center justify-between mb-4">
-          <span className="font-mono text-xs text-[#22D3EE]">Blueprint</span>
-          <span className="px-2 py-0.5 rounded-full text-[10px] border border-[#22D3EE]/30 text-[#22D3EE] font-mono">
+          <span className="font-mono text-xs text-[#22C55E]">Blueprint</span>
+          <span className="px-2 py-0.5 rounded-full text-[10px] border border-[#22C55E]/30 text-[#22C55E] font-mono">
             template
           </span>
         </div>
-        <div className="h-2 w-28 rounded-full bg-[#22D3EE]/30 mb-5" />
+        <div className="h-2 w-28 rounded-full bg-[#22C55E]/30 mb-5" />
         <div className="text-[10px] font-mono text-[#71717A] flex justify-between mb-1.5">
           <span>RAM</span>
           <span>4 GB cap</span>
         </div>
         <div className="relative h-2 bg-[#27272A] rounded-full overflow-visible mb-1">
-          <div className="h-full w-[62%] bg-[#22D3EE]/60 rounded-full" />
+          <div className="h-full w-[62%] bg-[#22C55E]/60 rounded-full" />
           <div
             className="absolute top-1/2 -translate-y-1/2 w-0.5 h-5 bg-red-400/70 rounded-full"
             style={{ left: 'calc(62% - 1px)' }}

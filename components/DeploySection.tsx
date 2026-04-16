@@ -28,7 +28,7 @@ export default function DeploySection() {
           </h2>
           <p className="text-[#71717A] text-lg max-w-2xl mx-auto">
             Aethera ships with a single shell script —{" "}
-            <code className="text-[#22D3EE] font-mono text-base">run.sh</code> — that handles your
+            <code className="text-[#22C55E] font-mono text-base">run.sh</code> — that handles your
             entire lifecycle. No Makefile, no manual compose commands, no guesswork. Clone the repo,
             run one command, and Aethera is live.
           </p>
@@ -46,10 +46,10 @@ export default function DeploySection() {
             <div className="space-y-1">
               <div className="text-[#71717A] select-none"># 1. Clone the repo</div>
               <div className="flex flex-wrap gap-x-1.5">
-                <span className="text-[#22D3EE]">git clone</span>
+                <span className="text-[#22C55E]">git clone</span>
                 <span className="text-[#D4D4D8]">https://github.com/jaameypr/aethera-next</span>
                 <span className="text-[#71717A]">&amp;&amp;</span>
-                <span className="text-[#22D3EE]">cd</span>
+                <span className="text-[#22C55E]">cd</span>
                 <span className="text-[#D4D4D8]">aethera</span>
               </div>
             </div>
@@ -66,15 +66,15 @@ export default function DeploySection() {
         {/* "That's it" explanation card */}
         <div className="bg-[#18181B] border border-[#27272A] rounded-xl p-6 mb-8 text-sm text-[#71717A] leading-relaxed">
           <span className="text-[#D4D4D8] font-semibold">That&apos;s it.</span> On first run,{" "}
-          <code className="text-[#22D3EE] font-mono">run.sh</code> automatically copies{" "}
-          <code className="text-[#22D3EE] font-mono">.env.example</code> to{" "}
-          <code className="text-[#22D3EE] font-mono">.env</code>, generates a cryptographically
-          random <code className="text-[#22D3EE] font-mono">JWT_SECRET</code> and{" "}
-          <code className="text-[#22D3EE] font-mono">MONGO_PASS</code> using{" "}
-          <code className="text-[#22D3EE] font-mono">openssl</code>, creates all required data
+          <code className="text-[#22C55E] font-mono">run.sh</code> automatically copies{" "}
+          <code className="text-[#22C55E] font-mono">.env.example</code> to{" "}
+          <code className="text-[#22C55E] font-mono">.env</code>, generates a cryptographically
+          random <code className="text-[#22C55E] font-mono">JWT_SECRET</code> and{" "}
+          <code className="text-[#22C55E] font-mono">MONGO_PASS</code> using{" "}
+          <code className="text-[#22C55E] font-mono">openssl</code>, creates all required data
           directories on disk, waits for MongoDB to pass its health check, then starts both the app
           and database containers with a single{" "}
-          <code className="text-[#22D3EE] font-mono">docker compose up -d --build</code>. The panel
+          <code className="text-[#22C55E] font-mono">docker compose up -d --build</code>. The panel
           is ready at{" "}
           <code className="text-[#7C3AED] font-mono">http://localhost:3000</code> and the first-run
           setup wizard will walk you through creating the admin account.
@@ -111,20 +111,20 @@ export default function DeploySection() {
         </div>
 
         {/* Under-the-hood callout */}
-        <div className="mt-5 flex gap-4 p-5 bg-[#18181B] border border-[#22D3EE]/20 rounded-xl">
-          <div className="shrink-0 mt-0.5 text-[#22D3EE]">
+        <div className="mt-5 flex gap-4 p-5 bg-[#18181B] border border-[#22C55E]/20 rounded-xl">
+          <div className="shrink-0 mt-0.5 text-[#22C55E]">
             <Info className="w-4 h-4" />
           </div>
           <p className="text-sm text-[#71717A] leading-relaxed">
             <span className="text-[#D4D4D8] font-medium">.env migration is automatic. </span>
             If you&apos;re upgrading from an older install that used a bare{" "}
-            <code className="text-[#22D3EE] font-mono">MONGODB_URI</code>, the script detects it,
+            <code className="text-[#22C55E] font-mono">MONGODB_URI</code>, the script detects it,
             generates{" "}
-            <code className="text-[#22D3EE] font-mono">MONGO_USER</code>/
-            <code className="text-[#22D3EE] font-mono">MONGO_PASS</code>, and patches your{" "}
-            <code className="text-[#22D3EE] font-mono">.env</code> in-place — with clear
+            <code className="text-[#22C55E] font-mono">MONGO_USER</code>/
+            <code className="text-[#22C55E] font-mono">MONGO_PASS</code>, and patches your{" "}
+            <code className="text-[#22C55E] font-mono">.env</code> in-place — with clear
             instructions to re-init MongoDB with a{" "}
-            <code className="text-[#22D3EE] font-mono">docker compose down -v</code>. No manual
+            <code className="text-[#22C55E] font-mono">docker compose down -v</code>. No manual
             config surgery required.
           </p>
         </div>

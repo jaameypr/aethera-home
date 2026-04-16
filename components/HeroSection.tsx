@@ -21,12 +21,12 @@ export default function HeroSection() {
 
       <div className="relative max-w-4xl mx-auto text-center">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#27272A] bg-[#18181B] text-xs text-[#71717A] mb-8 font-medium">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#22D3EE] animate-pulse" />
-          Open source · MIT Licensed · Free forever
+          <span className="w-1.5 h-1.5 rounded-full bg-[#22C55E] animate-pulse" />
+          ⛏ Built for Minecraft · MIT Licensed · Free forever
         </div>
 
         <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-[#D4D4D8] leading-tight tracking-tight mb-6">
-          Your game servers.{" "}
+          Your Minecraft servers.{" "}
           <span className="text-[#7C3AED]">Your infrastructure.</span>{" "}
           Your rules.
         </h1>

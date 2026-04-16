@@ -15,7 +15,7 @@ export default function Footer() {
             maskImage: "radial-gradient(circle, black 45%, transparent 75%)",
             WebkitMaskImage: "radial-gradient(circle, black 45%, transparent 75%)",
           }} />
-        <p className="text-[#71717A] text-sm">Self-hosted game server management.</p>
+        <p className="text-[#71717A] text-sm">Self-hosted Minecraft server management.</p>
         <p className="text-[#71717A] text-sm">
           Built with ♥ and open-sourced on{" "}
           <a

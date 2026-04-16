@@ -60,7 +60,7 @@ export default function ModuleSystem() {
           </h2>
           <p className="text-[#71717A] text-lg max-w-2xl mx-auto">
             Optional add-ons that run as Docker containers alongside the panel on the same{" "}
-            <code className="text-[#22D3EE] font-mono text-base">aethera-net</code> network.
+            <code className="text-[#22C55E] font-mono text-base">aethera-net</code> network.
             Install, configure, and remove them from the admin panel — no command line needed.
             Each module gets an isolated container and an auto-provisioned API key at install time.
           </p>
@@ -84,7 +84,7 @@ export default function ModuleSystem() {
                 <span
                   className={`shrink-0 px-2.5 py-0.5 rounded-full text-xs font-mono font-medium border ${
                     mod.builtIn
-                      ? "bg-[#22D3EE]/10 border-[#22D3EE]/30 text-[#22D3EE]"
+                      ? "bg-[#22C55E]/10 border-[#22C55E]/30 text-[#22C55E]"
                       : "bg-[#7C3AED]/10 border-[#7C3AED]/30 text-[#7C3AED]"
                   }`}
                 >

@@ -47,7 +47,7 @@ export default function HowItWorks() {
               <p className="text-[#71717A] text-sm leading-relaxed">{step.description}</p>
               {step.code && (
                 <div className="flex items-center gap-2 px-4 py-2.5 bg-[#09090B] border border-[#27272A] rounded-lg w-fit">
-                  <span className="text-[#22D3EE] font-mono text-xs select-all">{step.code}</span>
+                  <span className="text-[#22C55E] font-mono text-xs select-all">{step.code}</span>
                 </div>
               )}
             </div>
