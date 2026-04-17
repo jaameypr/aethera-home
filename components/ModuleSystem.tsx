@@ -18,7 +18,7 @@ const modules: Module[] = [
     builtIn: false,
     tagline: "Server events in your Discord, automatically.",
     description:
-      "A standalone Spring Boot + JDA app that runs alongside the panel. Link a project to your guild with a one-time code — the bot posts rich embeds whenever a server starts, stops, errors, or completes a backup. Includes a /whitelist command so players can request access directly from Discord, with managers approving from the channel.",
+      "A standalone Spring Boot + JDA app that runs alongside the panel. Once installed, configure each server's Discord notifications directly from server settings — pick the guild and channel from a dropdown and save. The bot posts rich embeds whenever a server starts, stops, errors, or completes a backup. Includes a /whitelist command so players can request access directly from Discord, with managers approving from the panel.",
   },
   {
     icon: <Mail className="w-5 h-5" />,
